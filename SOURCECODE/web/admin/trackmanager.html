@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metro Status</title>
+    <style>
+          body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+     header {
+           background-color: #141E46;
+            color: white;
+            padding: 20px 20px;
+            box-sizing: border-box;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 40px; /* Adjust as needed */
+            width: 40px; /* Adjust as needed */
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        ul li a:hover {
+            color: #C70039;
+        }
+
+    #container {
+        margin: 20px auto;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-color: lightblue;
+        border-radius: 10px;
+        width: 900px;
+        text-align:center;
+    }
+
+    #startBtn, #stopBtn {
+        align-items:  center;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    #stopBtn {
+        background-color: #FF4500;
+    }
+    #h2 {
+         text-align:center;
+        }
+    #status {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    #container2 {
+        margin: 20px auto;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-color: #DA70D6;
+        border-radius: 10px;
+        width: 900px;
+        text-align:center;
+    }
+
+    #startBtn2, #stopBtn2 {
+        align-items:  center;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    #stopBtn2 {
+        background-color: #FF4500;
+    }
+    #h2 {
+         text-align:center;
+        }
+    #status2 {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    </style>
+</head>
+<body>
+
+ <header>
+        <nav>
+            <div class="logo-container">
+                <img src="logo.png" alt="Logo">
+                <span class="logo-text">Metro Tracking System</span>
+            </div>
+            <ul>
+                <li><a href="adminprofile.jsp">Profile</a></li>
+                <li><a href="Totalamount.jsp">Total Amount</a></li>
+                <li><a href="Userdata.jsp">Search User</a></li>
+                <li><a href="complaints.jsp">User Complaints</a></li>
+                <li><a href="displayFeedback.jsp">User Feedback</a></li>
+                <li><a href="usercount.jsp">Live User Count</a></li>
+                <li><a href="adminhomepage.jsp">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<div id="container">
+    <h2>Blueline Metro Train</h2>
+    <button id="startBtn" onclick="startMetro()">Start Metro</button>
+    <button id="stopBtn" onclick="stopMetro()">Stop Metro</button>
+
+    <div id="status"></div>
+</div>    
+<div id="container2">
+    <h2>Purpleline Metro Train</h2>
+    <button id="startBtn2" onclick="startMetro2()">Start Metro</button>
+    <button id="stopBtn2" onclick="stopMetro2()">Stop Metro</button>
+    <div id="status2"></div>
+</div>
+    
+<script>
+    function startMetro() {
+        document.getElementById("startBtn").style.backgroundColor = "#00FF00"; // Green
+        document.getElementById("status").innerHTML = "Metro is working on a regular schedule.";
+
+        setTimeout(function () {
+            document.getElementById("startBtn").style.backgroundColor = "#4CAF50"; // Reset to original color
+        }, 5000); // 5000 milliseconds = 5 seconds
+    }
+
+    function stopMetro() {
+        document.getElementById("startBtn").style.backgroundColor = "#4CAF50"; // Reset to original color
+        document.getElementById("stopBtn").style.backgroundColor = "#FF0000"; // Red
+        document.getElementById("status").innerHTML = "There is some technical problem on the metro train.";
+
+        setTimeout(function () {
+            document.getElementById("stopBtn").style.backgroundColor = "#FF4500"; // Reset to original color
+        }, 5000); // 5000 milliseconds = 5 seconds
+    }
+</script>
+ <script>
+        function startMetro2() {
+            document.getElementById("startBtn2").style.backgroundColor = "#00FF00"; // Green
+            document.getElementById("status2").innerHTML = "Metro is working on a regular schedule for Redline.";
+
+            setTimeout(function () {
+                document.getElementById("startBtn2").style.backgroundColor = "#4CAF50"; // Reset to original color
+            }, 5000); // 5000 milliseconds = 5 seconds
+        }
+
+        function stopMetro2() {
+            document.getElementById("startBtn2").style.backgroundColor = "#4CAF50"; // Reset to original color
+            document.getElementById("stopBtn2").style.backgroundColor = "#FF0000"; // Red
+            document.getElementById("status2").innerHTML = "There is some technical problem on the Redline metro train.";
+
+            setTimeout(function () {
+                document.getElementById("stopBtn2").style.backgroundColor = "#FF4500"; // Reset to original color
+            }, 5000); // 5000 milliseconds = 5 seconds
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Form</title>
+    <style>
+      body {
+            font-family: Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+      header {
+            background-color: #ECF3F9;
+            color: white;
+            padding: 20px 20px;
+            box-sizing: border-box;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 40px; /* Adjust as needed */
+            width: 40px; /* Adjust as needed */
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        ul li a:hover {
+            color: #ff0dbe;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        #chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #BB75D0;
+            color: #fff;
+            border: none;
+            padding: 15px 70px;
+            cursor: pointer;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color:#D7AEE3;
+        }
+
+        #chat-display {
+            margin-top: 10px;
+        }
+
+        #chat-display p {
+            margin: 5px 0;
+        }
+</style>
+</head>
+<body>
+       <header>
+        <nav>
+            <div class="logo-container">
+                <img src="logo.png" alt="Logo">
+                <span class="logo-text">Metro Tracking System</span>
+            </div>
+            <ul>
+                <li><a href="#">Blue Line</a></li>
+                <li><a href="Purpleline.html">Purple Line</a></li>
+                <li><a href="homepage.jsp">Home</a></li>
+                <li><a href="admin/adminlogin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Complaint Form</h1>
+    
+    <div id="chat-container">
+        <div id="chat-display"></div>
+        
+        <!-- Add a select element for choosing the complaint subject -->
+        <label for="complaint-subject">Choose Subject:</label>
+        <select id="complaint-subject">
+            <option value="Booking Issue">Booking Issue</option>
+            <option value="Wrong Metro Location">Wrong Metro Location </option>
+            <option value="Other">Other</option>
+            <!-- Add more options as needed -->
+        </select>
+
+        <input type="text" id="user-input" placeholder="Type your complaint here...">
+        <button onclick="sendMessage()">Submit</button>
+    </div>
+
+    <script>
+        let chatDisplay = document.getElementById('chat-display');
+        let userInput = document.getElementById('user-input');
+
+        function sendMessage() {
+            let userMessage = userInput.value;
+            let complaintSubject = document.getElementById('complaint-subject').value;
+
+            if (userMessage.trim() !== '') {
+                displayMessage('You (' + complaintSubject + '): ' + userMessage);
+                userInput.value = '';
+
+                // Send the user message and subject to the server (JSP)
+                sendToServer(userMessage, complaintSubject);
+            }
+        }
+
+        function displayMessage(message) {
+            chatDisplay.innerHTML += '<p>' + message + '</p>';
+        }
+
+        function sendToServer(message, subject) {
+            // You can use AJAX or fetch to send the message and subject to the server (JSP)
+            // Here, we'll assume a simple synchronous request for simplicity
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'complaint.jsp?message=' + encodeURIComponent(message) + '&subject=' + encodeURIComponent(subject), false);
+            xhr.send();
+
+            // Display the server response (you can modify this based on your server-side implementation)
+            displayMessage('Server: ' + xhr.responseText);
+        }
+    </script>
+</body>
+</html>

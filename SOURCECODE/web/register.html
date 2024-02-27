@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<style>
+ /* Basic styling for the form (customize as needed) */
+body {
+    font-family: Tahoma, sans-serif;
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  
+    align-items: center;
+    min-height: 100vh;
+    background-color: #F5F5F5; /* Decrease transparency */
+}
+
+/* Apply styles to the form container */
+form {
+    position: relative;
+    width: 350px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 13px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Style the form headings */
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Style labels and input fields */
+label {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    width: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 11px;
+}
+
+/* Style radio buttons and their labels in a horizontal line */
+.radio-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center-align items horizontally */
+}
+
+.radio-label {
+    margin-right: 10px;
+}
+
+input[type="radio"] {
+    margin-top: 12px;
+    margin-right: 5px;
+}
+
+/* Style the Register button */
+input[type="submit"] {
+    width: 80%;
+    padding: 12px;
+    background-color: #BB75D0;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+/* Change button color on hover */
+input[type="submit"]:hover {
+    background-color: #D7AEE3;
+}
+
+/* Optional: Add responsive styling */
+@media (max-width: 600px) {
+    body {
+        margin-left: 0;
+    }
+}
+
+</style>
+<body>
+    <form action="register.jsp" method="post">
+<h2>User Registration</h2>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required pattern="^[a-zA-Z0-9._%+-]+@(mail\.com|gmail\.com)$" title="Please enter a valid email address ending with @mail.com or @gmail.com" />
+
+        <label for="mobile">Mobile Number</label>
+        <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}">
+
+        <label>Gender</label>
+        <div class="radio-container">
+            <div class="radio-label">
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+            </div>
+            <div class="radio-label">
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+            </div>
+            <div class="radio-label">
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </div>
+        </div>
+
+        <input type="submit" value="Register">
+    </form>
+ 
+</body>
+</html>
